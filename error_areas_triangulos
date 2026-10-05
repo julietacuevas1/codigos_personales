@@ -1,0 +1,38 @@
+def calcular_area_lineal(w1, dw1, h1, dh1, w2, dw2, h2, dh2):
+    
+    A1 = 0.5 * w1 * h1
+    A2 = 0.5 * w2 * h2
+    A_tot = A1 + A2
+
+    dA1 = 0.5 * (w1 * dh1 + h1 * dw1)
+    dA2 = 0.5 * (w2 * dh2 + h2 * dw2)
+    dA_tot = dA1 + dA2
+    
+    return A1, dA1, A2, dA2, A_tot, dA_tot
+
+datos = [
+    ["1",  4.66, 0.01, 5.10, 0.01, 4.66, 0.01, 0.39, 0.01],
+    ["2",  7.31, 0.01, 3.31, 0.01, 3.24, 0.01, 0.37, 0.01],
+    ["3",  7.32, 0.01, 3.26, 0.01, 3.93, 0.01, 0.34, 0.01],
+    ["4",  4.82, 0.01, 4.58, 0.01, 4.82, 0.01, 0.50, 0.01]
+]
+
+for fila in datos:
+    triángulo = fila[0]
+    w1 = fila[1]
+    dw1 = fila[2]
+    h1 = fila[3]
+    dh1 = fila[4]
+    w2 = fila[5]
+    dw2 = fila[6]
+    h2 = fila[7]
+    dh2 = fila[8]
+    
+    A1, dA1, A2, dA2, A_tot, dA_tot = calcular_area_lineal(
+        w1, dw1, h1, dh1, w2, dw2, h2, dh2
+    )
+    
+    print("Triángulo:", triángulo)
+    print(" Triángulo grande (A1) :", round(A1, 2), "±", round(dA1, 2) )
+    print(" Triángulo chico (A2)  :", round(A2, 2), "±", round(dA2, 2) )
+    print(" Área Total     (Atot) :", round(A_tot, 2), "±", round(dA_tot, 2))
